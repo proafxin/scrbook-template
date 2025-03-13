@@ -1,0 +1,29 @@
+\usepackage{amsmath,amsthm,amssymb}
+
+
+\newcommand{\PARENS}[1]{\left\lparen#1\right\rparen}
+\newcommand{\BRACES}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\BRACKETS}[1]{\left[\right]}
+
+\newcommand{\func}[2]{#1\PARENS{#1}}
+\newcommand{\hcf}[2]{\func{\gcd}{#1, #2}}
+\newcommand{\lcm}[2]{\func{\mbox{lcm}}{#1, #2}}
+\newcommand{\bigo}[1]{\func{O}{#1}}
+
+
+\newtheorem{theorem}{\textsc{Theorem}}
+\newtheorem{proposition}{\textsc{Proposition}}
+\newtheorem{lemma}{\textsc{Lemma}}
+
+\numberwithin{theorem}{chapter}
+\numberwithin{proposition}{chapter}
+\numberwithin{lemma}{chapter}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\numberwithin{definition}{chapter}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}

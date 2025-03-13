@@ -1,0 +1,64 @@
+\documentclass[paper=A4,fontsize=14pt,draft=false,DIV=calc,toc=bib,toc=index,leqno]{scrbook}
+\usepackage{xpatch}
+\usepackage[abbrev,backrefs,initials,msc-links,]{amsrefs}
+\xpatchcmd\bibchapter{\chapter*}{\addchap}{\typeout{bibchapter patched}}{\PatchFailure}
+\setlength\oddsidemargin{\dimexpr(\paperwidth-\textwidth)/2 - 1in\relax}
+\setlength\evensidemargin{\oddsidemargin}
+
+\newcommand\titlerule[1][1pt]{\rule{\textwidth}{#1}}
+\RedeclareSectionCommand[innerskip=0pt]{chapter}
+\renewcommand\chapterlineswithprefixformat[3]{%
+	#2\nobreak%
+	\Ifstr{#2}{}{}{\kern-\dp\strutbox}%
+	\titlerule\par\nobreak%
+	#3%
+	\par\nobreak\titlerule%
+}
+\makeatletter
+\renewcommand\chapterlinesformat[3]{%
+	\titlerule\par\nobreak%
+	\@hangfrom{#2}{#3}%
+	\par\nobreak \titlerule[4pt]%
+}
+\makeatother
+
+\usepackage{makeidx}
+\makeindex
+
+\addtokomafont{chapter}{\rmfamily}
+\addtokomafont{section}{\rmfamily}
+\addtokomafont{paragraph}{\rmfamily}
+\addtokomafont{title}{\rmfamily}
+\addtokomafont{chapterentry}{\rmfamily}
+
+\usepackage{scrlayer-scrpage}
+\lohead{\author}
+\rehead{Masum Billal}
+
+\uppertitleback{Dedicated to the one true ninja P\'{a}l Erd\H{o}s}
+\lowertitleback{\textcopyright Masum Billal, 2025}
+%\publishers{\includegraphics[scale=.4]{logo.png}}
+
+\usepackage[2.0, compress]{bxpdfver}
+
+\author{Masum Billal}
+\title{Sample Book}
+
+\input{commands}
+
+\input{fonts}
+
+
+\begin{document}
+	\frontmatter
+	\maketitle
+	\tableofcontents
+	\mainmatter
+	\include{2-chap1}
+	\include{3-chap2}
+	\backmatter
+	\pagestyle{empty}
+	\bibliography{ref}
+	\printindex
+
+\end{document}
